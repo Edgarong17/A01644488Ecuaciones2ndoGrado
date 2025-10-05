@@ -16,10 +16,9 @@ export class dataCalculate
         this.data = data;
     }
 
-    public calculate(): boolean { // Es una funcion para resolver una ecuacion de 2do grado 
+    public calculate(): boolean { 
         const { a, b, c } = this.data;
         
-        // Verificar si a = 0 (no es ecuación de segundo grado)
         if (a === 0) {
             this.data.result1 = '';
             this.data.result2 = '';
@@ -29,20 +28,17 @@ export class dataCalculate
         const discriminant = b * b - 4 * a * c;
         
         if (discriminant > 0) {
-            // Dos raíces reales distintas
             const root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
             const root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
             this.data.result1 = root1.toFixed(2);
             this.data.result2 = root2.toFixed(2);
             return true;
         } else if (discriminant === 0) {
-            // Una raíz real doble
             const root = -b / (2 * a);
             this.data.result1 = root.toFixed(2);
             this.data.result2 = root.toFixed(2);
             return true;
         } else {
-            // Raíces complejas (discriminant < 0)
             const realPart = -b / (2 * a);
             const imaginaryPart = Math.sqrt(-discriminant) / (2 * a);
             this.data.result1 = `${realPart.toFixed(2)} + ${imaginaryPart.toFixed(2)}i`;
